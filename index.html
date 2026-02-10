@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RUAEL TOM — ML ENGINEER</title>
-    <meta name="description" content="Ruael Tom - Machine Learning Engineer & Creative Developer">
+    <meta name="description" content="Ruael Tom - Machine Learning Engineer & Creative Developer Portfolio">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,40 +15,54 @@
 </head>
 
 <body>
+    <!-- Click Spark Canvas (global) -->
+    <canvas id="clickSparkCanvas"></canvas>
+
     <!-- Fixed Navigation -->
     <nav class="nav-fixed">
         <div class="nav-left">
-            <span class="nav-name">RUAEL TOM</span>
+            <span class="nav-name" data-magnet data-magnet-strength="3">RUAEL TOM</span>
             <span class="nav-role">ML ENGINEER / 2026</span>
         </div>
         <div class="nav-right">
-            <a href="#work">[WORK]</a>
-            <a href="#about">[ABOUT]</a>
-            <a href="#contact">[CONTACT]</a>
+            <a href="#work" data-magnet>[WORK]</a>
+            <a href="#gallery" data-magnet>[GALLERY]</a>
+            <a href="#about" data-magnet>[ABOUT]</a>
+            <a href="#contact" data-magnet>[CONTACT]</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-main">
-            <h1 class="hero-title">
-                <span class="line">MACHINE</span>
-                <span class="line">LEARNING</span>
-                <span class="line highlight">ENGINEER<span class="blink">_</span></span>
-            </h1>
+            <div class="hero-name-emphasis">
+                <span class="name-label" data-decrypt data-decrypt-speed="30">I AM</span>
+                <h1 class="hero-name-huge">
+                    <span class="name-first" data-decrypt data-decrypt-speed="60"
+                        data-decrypt-sequential="true">RUAEL</span>
+                    <span class="name-last" data-decrypt data-decrypt-speed="60" data-decrypt-sequential="true">TOM<span
+                            class="blink">_</span></span>
+                </h1>
+                <div class="name-underline"></div>
+            </div>
+            <div class="hero-subtitle">
+                <span class="line" data-decrypt data-decrypt-speed="40">MACHINE LEARNING</span>
+                <span class="line highlight" data-decrypt data-decrypt-speed="40">ENGINEER<span
+                        class="blink">_</span></span>
+            </div>
         </div>
         <div class="hero-sidebar">
-            <div class="status-box">
+            <div class="status-box" data-float data-float-range="8" data-float-speed="3">
                 <span class="status-label">STATUS</span>
                 <span class="status-value blink-slow">AVAILABLE</span>
             </div>
-            <div class="info-box">
+            <div class="info-box" data-float data-float-range="5" data-float-speed="4">
                 <span class="info-label">LOCATION</span>
                 <span class="info-value">OPEN TO REMOTE</span>
             </div>
-            <div class="info-box">
+            <div class="info-box" data-float data-float-range="6" data-float-speed="5">
                 <span class="info-label">FOCUS</span>
-                <span class="info-value">PYTHON / TENSORFLOW / DEEP LEARNING</span>
+                <span class="info-value" data-decrypt data-decrypt-speed="35">PYTHON / TENSORFLOW / DEEP LEARNING</span>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -60,35 +74,36 @@
     <!-- About Section -->
     <section class="section-split" id="about">
         <div class="split-left">
-            <span class="section-number">01</span>
-            <h2 class="section-title">ABOUT</h2>
+            <span class="section-number" data-split-text>01</span>
+            <h2 class="section-title" data-split-text>ABOUT</h2>
         </div>
         <div class="split-right">
-            <p class="large-text">
+            <p class="large-text" data-blur-text>
                 I'M A FRESHER WITH A PASSION FOR BUILDING INTELLIGENT SYSTEMS.
                 I BRIDGE THE GAP BETWEEN <span class="highlight">COMPLEX ALGORITHMS</span>
                 AND <span class="highlight">BEAUTIFUL USER EXPERIENCES</span>.
             </p>
             <div class="skills-list">
-                <div class="skill-row">
+                <div class="skill-row" data-float data-float-range="3" data-float-speed="4">
                     <span class="skill-name">MACHINE LEARNING</span>
-                    <span class="skill-tech">TENSORFLOW, PYTORCH, SCIKIT-LEARN</span>
+                    <span class="skill-tech" data-decrypt data-decrypt-trigger="view">TENSORFLOW, PYTORCH,
+                        SCIKIT-LEARN</span>
                 </div>
-                <div class="skill-row">
+                <div class="skill-row" data-float data-float-range="3" data-float-speed="5">
                     <span class="skill-name">PYTHON</span>
-                    <span class="skill-tech">PANDAS, NUMPY, MATPLOTLIB</span>
+                    <span class="skill-tech" data-decrypt data-decrypt-trigger="view">PANDAS, NUMPY, MATPLOTLIB</span>
                 </div>
-                <div class="skill-row">
+                <div class="skill-row" data-float data-float-range="3" data-float-speed="6">
                     <span class="skill-name">NEURAL NETWORKS</span>
-                    <span class="skill-tech">CNN, RNN, TRANSFORMERS</span>
+                    <span class="skill-tech" data-decrypt data-decrypt-trigger="view">CNN, RNN, TRANSFORMERS</span>
                 </div>
-                <div class="skill-row">
+                <div class="skill-row" data-float data-float-range="3" data-float-speed="4.5">
                     <span class="skill-name">WEB DEVELOPMENT</span>
-                    <span class="skill-tech">HTML, CSS, JS, REACT</span>
+                    <span class="skill-tech" data-decrypt data-decrypt-trigger="view">HTML, CSS, JS, REACT</span>
                 </div>
-                <div class="skill-row">
+                <div class="skill-row" data-float data-float-range="3" data-float-speed="5.5">
                     <span class="skill-name">DEVOPS</span>
-                    <span class="skill-tech">DOCKER, GIT, AWS</span>
+                    <span class="skill-tech" data-decrypt data-decrypt-trigger="view">DOCKER, GIT, AWS</span>
                 </div>
             </div>
         </div>
@@ -97,15 +112,15 @@
     <!-- Work Section -->
     <section class="section-work" id="work">
         <div class="work-header">
-            <span class="section-number">02</span>
-            <h2 class="section-title">SELECTED WORK</h2>
+            <span class="section-number" data-split-text>02</span>
+            <h2 class="section-title" data-split-text>SELECTED WORK</h2>
         </div>
 
         <div class="project-list">
-            <a href="#" class="project-item">
+            <a href="#" class="project-item" data-magnet data-magnet-strength="4" data-magnet-padding="60">
                 <div class="project-info">
                     <span class="project-number">001</span>
-                    <h3 class="project-name">AI IMAGE CLASSIFIER</h3>
+                    <h3 class="project-name" data-decrypt data-decrypt-trigger="hover">AI IMAGE CLASSIFIER</h3>
                     <span class="project-tags">PYTHON / TENSORFLOW / FLASK</span>
                 </div>
                 <div class="project-preview">
@@ -113,10 +128,10 @@
                 </div>
             </a>
 
-            <a href="#" class="project-item">
+            <a href="#" class="project-item" data-magnet data-magnet-strength="4" data-magnet-padding="60">
                 <div class="project-info">
                     <span class="project-number">002</span>
-                    <h3 class="project-name">STOCK PRICE PREDICTOR</h3>
+                    <h3 class="project-name" data-decrypt data-decrypt-trigger="hover">STOCK PRICE PREDICTOR</h3>
                     <span class="project-tags">LSTM / D3.JS / DATA VIZ</span>
                 </div>
                 <div class="project-preview">
@@ -124,10 +139,10 @@
                 </div>
             </a>
 
-            <a href="#" class="project-item">
+            <a href="#" class="project-item" data-magnet data-magnet-strength="4" data-magnet-padding="60">
                 <div class="project-info">
                     <span class="project-number">003</span>
-                    <h3 class="project-name">SENTIMENT ANALYZER</h3>
+                    <h3 class="project-name" data-decrypt data-decrypt-trigger="hover">SENTIMENT ANALYZER</h3>
                     <span class="project-tags">NLP / TRANSFORMERS / REAL-TIME</span>
                 </div>
                 <div class="project-preview">
@@ -135,10 +150,10 @@
                 </div>
             </a>
 
-            <a href="#" class="project-item">
+            <a href="#" class="project-item" data-magnet data-magnet-strength="4" data-magnet-padding="60">
                 <div class="project-info">
                     <span class="project-number">004</span>
-                    <h3 class="project-name">NEURAL STYLE TRANSFER</h3>
+                    <h3 class="project-name" data-decrypt data-decrypt-trigger="hover">NEURAL STYLE TRANSFER</h3>
                     <span class="project-tags">CNN / PYTORCH / CREATIVE AI</span>
                 </div>
                 <div class="project-preview">
@@ -148,29 +163,57 @@
         </div>
     </section>
 
+    <!-- Dome Gallery Section -->
+    <section class="section-dome-gallery" id="gallery">
+        <div class="dome-header">
+            <span class="section-number" data-split-text>03</span>
+            <h2 class="section-title" data-split-text>VISION DOME</h2>
+            <p class="dome-subtitle" data-decrypt data-decrypt-trigger="view">DRAG TO EXPLORE MY ML UNIVERSE</p>
+        </div>
+        <div id="sphereRoot" class="sphere-root" style="width:100%;height:700px;position:relative;">
+            <div id="sphereMain" class="sphere-main"
+                style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none;user-select:none;">
+                <div class="stage"
+                    style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;perspective:1040px;perspective-origin:50% 50%;">
+                    <div class="sphere" id="sphere"
+                        style="transform-style:preserve-3d;transform:translateZ(-520px);will-change:transform;">
+                    </div>
+                </div>
+                <div class="dome-overlay"></div>
+                <div class="dome-overlay dome-overlay--blur"></div>
+                <div class="edge-fade edge-fade--top"></div>
+                <div class="edge-fade edge-fade--bottom"></div>
+                <div class="viewer" id="viewer">
+                    <div class="scrim" id="scrim"></div>
+                    <div class="frame" id="frame"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="section-contact" id="contact">
         <div class="contact-left">
-            <span class="section-number">03</span>
-            <h2 class="section-title-large">LET'S<br>WORK<br>TOGETHER</h2>
+            <span class="section-number" data-split-text>04</span>
+            <h2 class="section-title-large" data-split-text>LET'S<br>WORK<br>TOGETHER</h2>
         </div>
         <div class="contact-right">
             <div class="contact-links">
-                <a href="mailto:ruael.tom@email.com" class="contact-link">
+                <a href="mailto:ruael.tom@email.com" class="contact-link" data-magnet data-magnet-strength="3">
                     <span class="link-label">EMAIL</span>
-                    <span class="link-value">RUAEL.TOM@EMAIL.COM</span>
+                    <span class="link-value" data-decrypt data-decrypt-trigger="hover">RUAEL.TOM@EMAIL.COM</span>
                 </a>
-                <a href="#" class="contact-link">
+                <a href="#" class="contact-link" data-magnet data-magnet-strength="3">
                     <span class="link-label">LINKEDIN</span>
-                    <span class="link-value">LINKEDIN.COM/IN/RUAELTOM</span>
+                    <span class="link-value" data-decrypt data-decrypt-trigger="hover">LINKEDIN.COM/IN/RUAELTOM</span>
                 </a>
-                <a href="#" class="contact-link">
+                <a href="#" class="contact-link" data-magnet data-magnet-strength="3">
                     <span class="link-label">GITHUB</span>
-                    <span class="link-value">GITHUB.COM/RUAELTOM</span>
+                    <span class="link-value" data-decrypt data-decrypt-trigger="hover">GITHUB.COM/RUAELTOM</span>
                 </a>
-                <a href="#" class="contact-link">
+                <a href="#" class="contact-link" data-magnet data-magnet-strength="3">
                     <span class="link-label">KAGGLE</span>
-                    <span class="link-value">KAGGLE.COM/RUAELTOM</span>
+                    <span class="link-value" data-decrypt data-decrypt-trigger="hover">KAGGLE.COM/RUAELTOM</span>
                 </a>
             </div>
         </div>

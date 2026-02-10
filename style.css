@@ -1,6 +1,6 @@
 /* ============================================
    BRUTALIST PORTFOLIO — RUAEL TOM
-   DARK THEME VERSION
+   DARK THEME + REACT BITS EFFECTS
    ============================================ */
 
 /* Variables */
@@ -9,7 +9,6 @@
     --bg-darker: #050505;
     --white: #f0f0f0;
     --accent: #CCFF00;
-    /* Acid Green */
     --gray: #888888;
     --gray-dark: #333333;
     --font-mono: 'Space Mono', 'Courier New', monospace;
@@ -51,7 +50,22 @@ a {
     text-decoration: none;
 }
 
-/* Fixed Navigation */
+/* ============================================
+   CLICK SPARK CANVAS (global overlay)
+   ============================================ */
+#clickSparkCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ============================================
+   FIXED NAVIGATION
+   ============================================ */
 .nav-fixed {
     position: fixed;
     top: 0;
@@ -62,7 +76,8 @@ a {
     align-items: center;
     padding: 1.5rem 2rem;
     border-bottom: var(--border);
-    background: var(--bg-dark);
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(10px);
     z-index: 1000;
 }
 
@@ -75,6 +90,7 @@ a {
     font-weight: 700;
     letter-spacing: 0.1em;
     color: var(--accent);
+    display: inline-block;
 }
 
 .nav-role {
@@ -90,6 +106,7 @@ a {
     letter-spacing: 0.05em;
     transition: all 0.2s;
     color: var(--gray);
+    display: inline-block;
 }
 
 .nav-right a:hover {
@@ -99,7 +116,9 @@ a {
     margin: -0.25rem -0.5rem;
 }
 
-/* Hero Section */
+/* ============================================
+   HERO SECTION — NAME EMPHASIS
+   ============================================ */
 .hero {
     min-height: 100vh;
     display: grid;
@@ -115,25 +134,138 @@ a {
     justify-content: center;
     padding: 4rem;
     border-right: var(--border);
+    gap: 2rem;
 }
 
-.hero-title {
-    font-family: var(--font-display);
-    font-size: clamp(4rem, 15vw, 12rem);
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    color: var(--white);
+.hero-name-emphasis {
+    position: relative;
 }
 
-.hero-title .line {
+.name-label {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    letter-spacing: 0.4em;
+    color: var(--gray);
     display: block;
+    margin-bottom: 0.5rem;
+    animation: fadeSlideIn 0.8s ease-out;
 }
 
-.hero-title .highlight {
+.hero-name-huge {
+    font-family: var(--font-display);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+    overflow: hidden;
+}
+
+.name-first {
+    display: block;
+    font-size: clamp(5rem, 18vw, 14rem);
+    color: var(--white);
+    animation: nameReveal 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    position: relative;
+}
+
+.name-first::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: lineGrow 0.8s cubic-bezier(0.23, 1, 0.32, 1) 0.6s forwards;
+}
+
+.name-last {
+    display: block;
+    font-size: clamp(5rem, 18vw, 14rem);
+    color: var(--bg-dark);
+    background: var(--accent);
+    padding: 0 1rem;
+    display: inline-block;
+    animation: nameReveal 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+    position: relative;
+    box-shadow: 8px 8px 0 rgba(204, 255, 0, 0.3);
+}
+
+.name-underline {
+    width: 100%;
+    height: 4px;
+    background: var(--accent);
+    margin-top: 1rem;
+    animation: lineGrow 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.8s forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.hero-subtitle {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-subtitle .line {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    animation: fadeSlideIn 0.8s ease-out 1s both;
+}
+
+.hero-subtitle .highlight {
     color: var(--bg-dark);
     background: var(--accent);
     padding: 0 0.5rem;
     display: inline-block;
+    animation: fadeSlideIn 0.8s ease-out 1.2s both;
+}
+
+/* Encrypted character style */
+.char-encrypted {
+    color: var(--accent);
+    opacity: 0.6;
+}
+
+.char-revealed {
+    color: inherit;
+}
+
+@keyframes nameReveal {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes lineGrow {
+    0% {
+        transform: scaleX(0);
+    }
+
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .blink {
@@ -157,6 +289,7 @@ a {
     animation: blink 2s step-end infinite;
 }
 
+/* Hero Sidebar */
 .hero-sidebar {
     display: flex;
     flex-direction: column;
@@ -171,6 +304,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    transition: transform 0.3s ease;
 }
 
 .status-label,
@@ -229,7 +363,39 @@ a {
     }
 }
 
-/* Split Sections */
+/* ============================================
+   SPLIT TEXT & BLUR TEXT ANIMATIONS
+   ============================================ */
+.split-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px) rotateX(40deg);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.split-char.visible {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+}
+
+/* Blur Text */
+.blur-word {
+    display: inline-block;
+    filter: blur(10px);
+    opacity: 0;
+    transition: filter 0.8s ease, opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(8px);
+}
+
+.blur-word.visible {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
 .section-split {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -283,7 +449,7 @@ a {
     padding: 0 0.25rem;
 }
 
-/* Skills List */
+/* Skills */
 .skills-list {
     display: flex;
     flex-direction: column;
@@ -297,6 +463,7 @@ a {
     align-items: center;
     padding: 1.5rem 0;
     border-bottom: var(--border-light);
+    transition: transform 0.3s ease;
 }
 
 .skill-row:first-child {
@@ -315,7 +482,9 @@ a {
     text-align: right;
 }
 
-/* Work Section */
+/* ============================================
+   WORK SECTION
+   ============================================ */
 .section-work {
     min-height: 100vh;
     border-bottom: var(--border);
@@ -362,7 +531,7 @@ a {
     height: 100%;
     background: var(--accent);
     transition: width 0.4s cubic-bezier(0.7, 0, 0.3, 1);
-    z-index: -1;
+    z-index: 0;
 }
 
 .project-item:hover::before {
@@ -381,6 +550,8 @@ a {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .project-number {
@@ -414,6 +585,8 @@ a {
     opacity: 0;
     transform: translateX(-20px);
     transition: all 0.3s;
+    position: relative;
+    z-index: 1;
 }
 
 .project-item:hover .project-preview {
@@ -427,7 +600,138 @@ a {
     color: var(--bg-dark);
 }
 
-/* Contact Section */
+/* ============================================
+   DOME GALLERY SECTION 
+   ============================================ */
+.section-dome-gallery {
+    border-bottom: var(--border);
+    background: var(--bg-darker);
+    overflow: hidden;
+}
+
+.dome-header {
+    padding: 4rem 4rem 2rem;
+    border-bottom: var(--border);
+    display: flex;
+    gap: 2rem;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.dome-header .section-number {
+    color: var(--accent);
+}
+
+.dome-header .section-title {
+    color: var(--white);
+}
+
+.dome-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 0.2em;
+    margin-left: auto;
+}
+
+/* Dome Gallery Core */
+.sphere-root {
+    --radius: 520px;
+    --segments-x: 35;
+    --segments-y: 35;
+    --overlay-blur-color: #050505;
+}
+
+.sphere-root *,
+.sphere-root *::before,
+.sphere-root *::after {
+    box-sizing: border-box;
+}
+
+.sphere,
+.sphere>div {
+    transform-style: preserve-3d;
+}
+
+.dome-overlay,
+.dome-overlay--blur {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.dome-overlay {
+    background-image: radial-gradient(rgba(235, 235, 235, 0) 65%, var(--overlay-blur-color, #050505) 100%);
+}
+
+.dome-overlay--blur {
+    -webkit-mask-image: radial-gradient(rgba(235, 235, 235, 0) 70%, var(--overlay-blur-color, #050505) 90%);
+    mask-image: radial-gradient(rgba(235, 235, 235, 0) 70%, var(--overlay-blur-color, #050505) 90%);
+    backdrop-filter: blur(3px);
+}
+
+.viewer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 72px;
+}
+
+.viewer .frame {
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    display: flex;
+}
+
+.viewer .scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 500ms ease;
+    backdrop-filter: blur(3px);
+}
+
+.sphere-root[data-enlarging='true'] .viewer .scrim {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.edge-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 120px;
+    z-index: 5;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, var(--overlay-blur-color, #050505));
+}
+
+.edge-fade--top {
+    top: 0;
+    transform: rotate(180deg);
+}
+
+.edge-fade--bottom {
+    bottom: 0;
+}
+
+body.dg-scroll-lock {
+    overflow: hidden;
+}
+
+/* ============================================
+   CONTACT SECTION
+   ============================================ */
 .section-contact {
     min-height: 100vh;
     display: grid;
@@ -521,7 +825,9 @@ a {
     border-top: var(--border);
 }
 
-/* Mobile Responsive */
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
 @media (max-width: 900px) {
     .hero {
         grid-template-columns: 1fr;
@@ -532,8 +838,13 @@ a {
         border-bottom: var(--border);
     }
 
-    .hero-title {
-        font-size: 4rem;
+    .name-first,
+    .name-last {
+        font-size: 4rem !important;
+    }
+
+    .hero-subtitle .line {
+        font-size: 1.5rem;
     }
 
     .section-split {
@@ -564,5 +875,13 @@ a {
 
     .nav-right {
         display: none;
+    }
+
+    .dome-subtitle {
+        margin-left: 0;
+    }
+
+    .dome-header {
+        padding: 2rem;
     }
 }
