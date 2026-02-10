@@ -180,7 +180,6 @@ a {
 }
 
 .name-last {
-    display: block;
     font-size: clamp(5rem, 18vw, 14rem);
     color: var(--bg-dark);
     background: var(--accent);

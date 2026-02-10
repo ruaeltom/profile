@@ -139,7 +139,7 @@ function initDecryptedText() {
     const elements = document.querySelectorAll('[data-decrypt]');
 
     elements.forEach(el => {
-        const originalText = el.textContent;
+        const rawText = el.textContent;
         const speed = parseInt(el.dataset.decryptSpeed) || 50;
         const sequential = el.dataset.decryptSequential === 'true';
         const trigger = el.dataset.decryptTrigger || 'load'; // 'load', 'view', 'hover'
@@ -147,7 +147,9 @@ function initDecryptedText() {
         // Store the blink span if present
         const blinkSpan = el.querySelector('.blink');
         const blinkHTML = blinkSpan ? blinkSpan.outerHTML : '';
-        const cleanText = blinkSpan ? originalText.replace(blinkSpan.textContent, '') : originalText;
+        const rawClean = blinkSpan ? rawText.replace(blinkSpan.textContent, '') : rawText;
+        // Normalize whitespace: collapse runs of whitespace to single space, trim ends
+        const cleanText = rawClean.replace(/\s+/g, ' ').trim();
 
         function scramble() {
             let iteration = 0;
@@ -228,20 +230,31 @@ function initMagnet() {
         const padding = parseFloat(el.dataset.magnetPadding) || 80;
         let isActive = false;
 
-        // Wrap content for transform
-        if (!el.querySelector('.magnet-inner')) {
-            const inner = document.createElement('span');
-            inner.className = 'magnet-inner';
-            inner.style.display = 'inline-block';
-            inner.style.transition = 'transform 0.5s ease-in-out';
-            inner.style.willChange = 'transform';
-            while (el.firstChild) {
-                inner.appendChild(el.firstChild);
-            }
-            el.appendChild(inner);
-        }
+        // Check if this is a flex/complex container (has multiple child elements)
+        const isComplex = el.children.length > 1;
 
-        const inner = el.querySelector('.magnet-inner');
+        // For simple elements (nav links), wrap content in inner span for transform
+        // For complex elements (project items, contact links), transform the element directly
+        let target;
+        if (isComplex) {
+            // Apply transform directly — don't wrap children or it breaks flex layout
+            target = el;
+            el.style.willChange = 'transform';
+            el.style.transition = 'transform 0.5s ease-in-out';
+        } else {
+            if (!el.querySelector('.magnet-inner')) {
+                const inner = document.createElement('span');
+                inner.className = 'magnet-inner';
+                inner.style.display = 'inline-block';
+                inner.style.transition = 'transform 0.5s ease-in-out';
+                inner.style.willChange = 'transform';
+                while (el.firstChild) {
+                    inner.appendChild(el.firstChild);
+                }
+                el.appendChild(inner);
+            }
+            target = el.querySelector('.magnet-inner');
+        }
 
         window.addEventListener('mousemove', (e) => {
             const rect = el.getBoundingClientRect();
@@ -254,16 +267,16 @@ function initMagnet() {
             if (distX < rect.width / 2 + padding && distY < rect.height / 2 + padding) {
                 if (!isActive) {
                     isActive = true;
-                    inner.style.transition = 'transform 0.3s ease-out';
+                    target.style.transition = 'transform 0.3s ease-out';
                 }
                 const offsetX = (e.clientX - centerX) / strength;
                 const offsetY = (e.clientY - centerY) / strength;
-                inner.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+                target.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
             } else {
                 if (isActive) {
                     isActive = false;
-                    inner.style.transition = 'transform 0.5s ease-in-out';
-                    inner.style.transform = 'translate3d(0, 0, 0)';
+                    target.style.transition = 'transform 0.5s ease-in-out';
+                    target.style.transform = 'translate3d(0, 0, 0)';
                 }
             }
         });
@@ -595,6 +608,9 @@ function initDomeGallery() {
         lastX = e.clientX; lastY = e.clientY;
         velocityX = 0; velocityY = 0;
         sphereMain.setPointerCapture(e.pointerId);
+        // Stop auto-rotate on drag
+        autoRotate = false;
+        if (autoTimer) clearTimeout(autoTimer);
     });
 
     sphereMain.addEventListener('pointermove', (e) => {
@@ -646,9 +662,9 @@ function initDomeGallery() {
         inertiaRAF = requestAnimationFrame(step);
     }
 
-    // Auto-rotate
-    let autoRotate = true;
-    let autoTimer = null;
+    // Auto-rotate — variables hoisted so pointerdown handler above can access them
+    var autoRotate = true;
+    var autoTimer = null;
     function autoLoop() {
         if (autoRotate && !dragging) {
             rotation.y = wrapAngle(rotation.y + 0.08);
@@ -658,10 +674,7 @@ function initDomeGallery() {
     }
     requestAnimationFrame(autoLoop);
 
-    sphereMain.addEventListener('pointerdown', () => {
-        autoRotate = false;
-        if (autoTimer) clearTimeout(autoTimer);
-    });
+    // Resume auto-rotate after drag ends (pointerdown handled above)
     sphereMain.addEventListener('pointerup', () => {
         autoTimer = setTimeout(() => { autoRotate = true; }, 4000);
     });
