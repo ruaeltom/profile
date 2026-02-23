@@ -489,18 +489,26 @@ function initDomeGallery() {
     const RADIUS = 520;
 
     const ML_IMAGES = [
-        { src: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&auto=format&fit=crop', alt: 'AI Neural Network' },
-        { src: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&auto=format&fit=crop', alt: 'Robot AI Brain' },
-        { src: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?w=400&auto=format&fit=crop', alt: 'Data Science Code' },
-        { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&auto=format&fit=crop', alt: 'Circuit Board' },
-        { src: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&auto=format&fit=crop', alt: 'Humanoid Robot' },
-        { src: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&auto=format&fit=crop', alt: 'Matrix Data' },
-        { src: 'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=400&auto=format&fit=crop', alt: 'AI Chip' },
-        { src: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&auto=format&fit=crop', alt: 'Code Screen' },
-        { src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&auto=format&fit=crop', alt: 'Engineer' },
-        { src: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&auto=format&fit=crop', alt: 'Cybersecurity' },
-        { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&auto=format&fit=crop', alt: 'Smart Tech' },
-        { src: 'https://images.unsplash.com/photo-1531746790095-e5981e3e8793?w=400&auto=format&fit=crop', alt: 'Innovation' },
+        { src: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80&auto=format&fit=crop', alt: 'AI Neural Network' },
+        { src: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&q=80&auto=format&fit=crop', alt: 'Robot AI Brain' },
+        { src: 'https://images.unsplash.com/photo-1555255707-c07966088b7b?w=400&q=80&auto=format&fit=crop', alt: 'Data Science Code' },
+        { src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80&auto=format&fit=crop', alt: 'Circuit Board' },
+        { src: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80&auto=format&fit=crop', alt: 'Humanoid Robot' },
+        { src: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80&auto=format&fit=crop', alt: 'Matrix Data' },
+        { src: 'https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=400&q=80&auto=format&fit=crop', alt: 'AI Chip' },
+        { src: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&q=80&auto=format&fit=crop', alt: 'Code Screen' },
+        { src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80&auto=format&fit=crop', alt: 'Engineer' },
+        { src: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80&auto=format&fit=crop', alt: 'Cybersecurity' },
+        { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&q=80&auto=format&fit=crop', alt: 'Smart Tech' },
+        { src: 'https://images.unsplash.com/photo-1531746790095-e5981e3e8793?w=400&q=80&auto=format&fit=crop', alt: 'Innovation' },
+        { src: 'https://images.unsplash.com/photo-1591453089816-0fbb971b454c?w=400&q=80&auto=format&fit=crop', alt: 'Deep Learning' },
+        { src: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=80&auto=format&fit=crop', alt: 'Hacker Screen' },
+        { src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80&auto=format&fit=crop', alt: 'Tech Team' },
+        { src: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80&auto=format&fit=crop', alt: 'Server Data Center' },
+        { src: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&q=80&auto=format&fit=crop', alt: 'Digital Screens' },
+        { src: 'https://images.unsplash.com/photo-1535223289429-462edb9e5463?w=400&q=80&auto=format&fit=crop', alt: 'VR Technology' },
+        { src: 'https://images.unsplash.com/photo-1623282033815-40b05d96c903?w=400&q=80&auto=format&fit=crop', alt: 'AI Robot Hand' },
+        { src: 'https://images.unsplash.com/photo-1593642634402-b0eb5e2eebc9?w=400&q=80&auto=format&fit=crop', alt: 'Laptop Code' },
     ];
 
     const sphereEl = document.getElementById('sphere');
@@ -586,6 +594,10 @@ function initDomeGallery() {
                 filter:grayscale(0.7) brightness(0.8);
                 transition:filter 0.3s ease;
             `;
+            img.onerror = () => {
+                img.style.display = 'none';
+                imageDiv.style.background = '#111';
+            };
 
             imageDiv.appendChild(img);
             itemDiv.appendChild(imageDiv);
